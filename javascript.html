@@ -1,0 +1,766 @@
+<html>
+	<head>
+		<style>
+			h4{
+				margin-bottom: 0;
+			}
+			samp{
+				color: white;
+				background: black;
+			}
+
+			.methodExplanation{
+				font-weight: 100;
+			}
+
+			section p{
+				margin-top: 0;
+			}
+
+			h4{
+				margin-bottom 0;
+			}
+		</style>
+	</head>
+	<body>
+
+		<h1>Ecma Script Examples</h1>
+
+		<h3>ES5 December 2009</h3>
+		<section id="es5Container">
+
+			<div>
+				<h4>1) Strict</h4>
+				<p>
+					"use strict" defines that the JavaScript code should be run in "strict mode".
+					<ul>
+						<li>
+							All variables and objects must be declared.
+						</li>
+						<li>
+							duplicate parameter names are not allowed.
+						</li>
+						<li>
+							Deleting function, variable, undeletable parameter is not allowed.
+						</li>
+						<li>
+							Octal numeric literals are not allowed.
+						</li>
+						<li>
+							Octal escape characters are not allowed.
+						</li>
+						<li>
+							Writing to a read only property is not allowed.
+						</li>
+						<li>
+							The string "eval" and "arguments" cannot be used as a variable.
+						</li>
+						<li>
+							The with statement is not allowed.
+						</li>
+					</ul>
+					The "use strict" directive is only recognized at the beginning of a script or a function. It is also just a string so older browsers will just ignore it.
+				</p>
+			</div>
+
+			<div>
+				<h4>2) String.trim()<span class="methodExplanation"> removes whitespace from both sides of a string.</span></h4>
+
+				<code>
+					var str = "       Hello World!        ";<br>
+					console.log("Trimmed", str.trim());
+				</code>
+				<br>
+				<samp id="trimSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>3) Array.isArray()<span class="methodExplanation"> checks whether an object is an array.</span></h4>
+				<code>
+					var carMakeArray = ["toyota", "kia", "ford", "tesla"];<br>
+					var isCarMakerAnArray = Array.isArray(carMakeArray);<br>
+					console.log("is car make an array?", isCarMakerAnArray);
+				</code>
+				<br>
+				<samp id="isCarMakeArraySamp">
+				</samp>
+				<br>
+				<code>
+					var carNumber = 1;<br>
+					var isCarNumberAnArray = Array.isArray(carNumber);<br>
+					console.log("Is car number an array?", isCarNumberAnArray);
+				</code>
+				<br>
+				<samp id="isCarNumberAnArraySamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>4) Array.forEach()<span class="methodExplanation"> performs a function for each element in an array. </span></h4>
+				<code>
+					var books = "";<br>
+					var booksArray = ["Clean Code", "Soft Skills", "Javascript", "HTML for dummies"];<br>
+					booksArray.forEach(printEachOne);<br>
+					console.log("Books string", books);<br>
+					<br>
+					function printEachOne(value){<br>
+						&nbsp;books = books + value;<br>
+					}
+				</code>
+				<br>
+				<samp id="arrayForEachSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>5) Array.map()<span class="methodExplanation"> returns a new array with mapped values.</span></h4>
+				<code>
+					var numbers1 = [1, 2, 3, 4, 5];<br>
+					var numbers2 = numbers1.map(multiplyByTwo);<br>
+					console.log("Mapped numbers * 2", numbers2);<br>
+					<br>
+					function multiplyByTwo(value) {<br>
+					  &nbsp;return value * 2;<br>
+					}
+				</code>
+				<br>
+				<samp id="arrayForMapSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>6) Array.filter()<span class="methodExplanation"> returns a new array where the filter has been applied.</span></h4>
+				<code>
+					var numbers1 = [1, 2, 3, 4, 5];<br>
+					var numbers2 = numbers1.filter(filterGreaterThanThree);<br>
+					console.log("Numbers2 filtered > 3:", numbers2);<br>
+					<br>
+					function filterGreaterThanThree(value){<br>
+						&nbsp;return value > 3;<br>
+					}
+				</code>
+				<br>
+				<samp id="arrayForFilterSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>7) Array.reduce()<span class="methodExplanation"> will iterate through an array to create a single value.</span></h4>
+				<code>
+					var numbers = [1, 2, 3, 4, 5];<br>
+					var sum = numbers.reduce(sumReduce);<br>
+					console.log("Numbers reduced to a sum:", sum);<br>
+					<br>
+					function sumReduce(total, value){<br>
+						&nbsp;return total + value;<br>
+					}
+				</code>
+				<br>
+				<samp id="arrayForReduceSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>8) Array.reduceRight()<span class="methodExplanation"> will iterate through an array to create a single value starting from the right.</span></h4>
+				<code>
+					var numbers1 = [1, 2, 3, 4, 5];<br>
+					var sum = numbers1.reduce(sumReduce);<br>
+					console.log("Numbers reduced to a sum from the right:", numbers2);<br>
+					<br>
+					function sumReduce(total, value){<br>
+						&nbsp;return total + value;<br>
+					}
+				</code>
+				<br>
+				<samp id="arrayForReduceRightSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>9) Array.every()<span class="methodExplanation"> will check if a function returns true for each element in the array</span></h4>
+				<code>
+					var numbers = [4, 5, 6, 7, 8];<br>
+					var areNumbersAllOver3 = numbers.every(isOver3);<br>
+					var areNumbersAllUnder3 = numbers.every(isUnder3);<br>
+					console.log("Are all numbers over 3?", areNumbersAllOver3);<br>
+					console.log("Are all numbers under 3?", areNumbersAllUnder3);<br>
+					<br>
+					function isOver3(value){<br>
+						&nbsp;return value > 3;<br>
+					}<br>
+					<br>
+					function isUnder3 (value){<br>
+						&nbsp;return value < 3;<br>
+					}
+				</code>
+				<br>
+				<samp id="arrayForEveryOverSamp">
+				</samp>
+				<br>
+				<samp id="arrayForEveryUnderSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>10) Array.some()<span class="methodExplanation"> check if some array values return true for a test.</span></h4>
+				<code>
+					var numbers = [1, 2, 3, 4, 5];<br>
+					var areAnyNumbersOver4 = numbers.some(isOver4);<br>
+					var areAnyNumbersUnder5 = numbers.some(isOver5);<br>
+					console.log("Are any numbers over 4?", areAnyNumbersOver4);<br>
+					console.log("Are any numbers over 5?", areAnyNumbersUnder5);<br>
+					<br>
+					function isOver4(value){<br>
+						&nbsp;return value > 4;<br>
+					}<br>
+					<br>
+					function isOver5 (value){<br>
+						&nbsp;return value > 5;<br>
+					}
+				</code>
+				<br>
+				<samp id="arraySomeOver4Samp">
+				</samp>
+				<br>
+				<samp id="arraySomeOver5Samp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>11) Array.indexOf()<span class="methodExplanation"> searches an array for an element value and returns its position.</span></h4>
+				<code>
+					var carMakes = ["Toyota", "Kia", "Subaru", "Ford"];<br>
+					var index = carMakes.indexOf("Subaru");<br>
+					console.log('Index of "Subaru"', index);
+				</code>
+				<br>
+				<samp id="arrayIndexOfSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>12) Array.lastIndexOf()<span class="methodExplanation"> searches an array for an element value and returns its last position if there are duplicates.</span></h4>
+				<code>
+					var carMakes = ["Kia", "Toyota", "Kia", "Subaru", "Ford"];<br>
+					var index = carMakes.lastIndexOf("Kia");<br>
+					console.log('Index of "Kia"', index);
+				</code>
+				<br>
+				<samp id="arrayLastIndexOfSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>13) JSON.parse()<span class="methodExplanation"> parses out a string into JSON.</span></h4>
+				<code>
+					var data = '{"id": 0, "type":"bird", "colors": ["red", "blue"] }';<br>
+					var json = JSON.parse(data);<br>
+				</code>
+			</div>
+
+			<div>
+				<h4>14) JSON.stringify()<span class="methodExplanation"> makes an object into a string.</span></h4>
+				<code>
+					var data = '{"id": 0, "type":"bird", "colors": ["purple", "green"] }';<br>
+					var jsonString = JSON.stringify(data);<br>
+					console.log("JSON string:", jsonString);
+				</code>
+				<br>
+				<samp id="jsonStringifySamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>15) Date.now()<span class="methodExplanation"> returns the number of milliseconds since January 1. 1970 00:00:00 UTC.</span></h4>
+				<code>
+					var date = Date.now();<br>
+					console.log("Date now", date);
+				</code>
+				<br>
+				<samp id="dateNowSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>16) Getters and Setters<span class="methodExplanation"> getters and setter functions can be found like a property.</span></h4>
+				<code>
+					var pet = {<br>
+						&nbsp;creature: "Dog",<br>
+						&nbsp;name: "Jingles",<br>
+						&nbsp;get description() {<br>
+						&nbsp;&nbsp;	return this.name + " is a " + this.creature + ".";<br>
+						&nbsp;}<br>
+					};<br>
+					console.log("Pet", pet.description);
+				</code>
+				<br>
+				<samp id="getterSetterSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>17) New Object Methods<span class="methodExplanation">	Object properties can be defined and changed using several object methods.</span></h4>
+				<ul>
+					<li>
+						Adding or changing an object property
+						<br>
+						<code>
+							Object.defineProperty(object, property, descriptor)
+						</code>
+					</li>
+					<li>
+						Adding or changing many object properties
+						<br>
+						<code>
+							Object.defineProperties(object, descriptors)
+						</code>
+					</li>
+					<li>
+						Accessing Properties
+						<br>
+						<code>
+							Object.getOwnPropertyDescriptor(object, property)
+						</code>
+					</li>
+					<li>
+						Returns all properties as an array
+						<br>
+						<code>
+							Object.getOwnPropertyNames(object)
+						</code>
+					</li>
+					<li>
+						Returns enumerable properties as an array
+						<br>
+						<code>
+							Object.keys(object)
+						</code>
+					</li>
+					<li>
+						Accessing the prototype
+						<br>
+						<code>
+							Object.getPrototypeOf(object)
+						</code>
+					</li>
+					<li>
+						Prevents adding properties to an object
+						<br>
+						<code>
+							Object.preventExtensions(object)
+						</code>
+					</li>
+					<li>
+						Returns true if properties can be added to an object
+						<br>
+						<code>
+							Object.isExtensible(object)
+						</code>
+					</li>
+					<li>
+						Prevents changes of object properties (not values)
+						<br>
+						<code>
+							Object.seal(object)
+						</code>
+					</li>
+					<li>
+						Returns true if object is sealed
+						<br>
+						<code>
+							Object.isSealed(object)
+						</code>
+					</li>
+					<li>
+						Prevents any changes to an object
+						<br>
+						<code>
+							Object.freeze(object)
+						</code>
+					</li>
+					<li>
+						Returns true if object is frozen
+						<br>
+						<code>
+							Object.isFrozen(object)
+						</code>
+					</li>
+				</ul>
+			</div>
+
+			<div>
+				<h4>18) Property Access On Strings<span class="methodExplanation"> get property access to a string like in an array instead of using charAt() method.</span></h4>
+				<code>
+					var str = "CAT";<br>
+					console.log("Char at index 1", str[1]);
+				</code>
+				<br>
+				<samp id="propertyAccessOnStringsSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>19) Reserved Words As Property Names<span class="methodExplanation"> allows reserved words like "new" to be used as a property name.</span></h4>
+					<code>
+						var obj = {name: "John", new: "yes"}
+					</code>
+			</div>
+
+		</section>
+
+		<h3>ES6 2015</h3>
+		<section id="es6Container">
+
+			<div>
+				<h4>1) let<span class="methodExplanation"> allows you to declare a variable with block scope.</span></h4>
+				<code>
+					var x = 1;<br>
+					{<br>
+						&nbsp;let x = 2;<br>
+						&nbsp;console.log("x inside is", x);<br>
+					}<br>
+					console.log("x outside is", x);
+				</code>
+				<br>
+				<samp id="letInsideSamp">
+				</samp>
+				<br>
+				<samp id="letOutsideSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>2) const<span class="methodExplanation"> allows you to declare a constant with block scope.</span></h4>
+				<code>
+					var x = 1;
+					{
+						&nbsp;let x = 2;<br>
+						&nbsp;console.log("x inside is", x);<br>
+					}<br>
+					console.log("x outside is", x);
+				</code>
+				<br>
+				<samp id="constInsideSamp">
+				</samp>
+				<br>
+				<samp id="constOutsideSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>3) Default Function Parameter Values<span class="methodExplanation"> functions can have default parameter values.</span></h4>
+				<code>
+					function myFunction(x, y = 10) {<br>
+					  &nbsp;return y; //y will return 10 if not passed or undefined<br>
+					}
+				</code>
+			</div>
+
+			<div>
+				<h4>4) Array.find()<span class="methodExplanation"> returns the value of the first element that passes a function.</span></h4>
+				<code>
+					var numbers = [1, 2, 3, 4, 5];<br>
+					var firstAbove4 = numbers.find(isAbove4);<br>
+					<br>
+					function isAbove4(value, index, array){<br>
+						&nbsp;return value > 4;<br>
+					}<br>
+					console.log("Value of first above 4 is:", firstAbove4);
+				</code>
+				<br>
+				<samp id="arrayFindSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>5) Array.findIndex()<span class="methodExplanation"> returns the index of the first element that passes a function.</span></h4>
+				<code>
+					var numbers = [1, 2, 3, 4, 5];<br>
+					var firstAbove4 = numbers.findIndex(isAbove4);<br>
+					<br>
+					function isAbove4(value, index, array){<br>
+						&nbsp;return value > 4;<br>
+					}<br>
+					console.log("Index of first above 4 is:", firstAbove4);
+				</code>
+				<br>
+				<samp id="arrayFindIndexSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>6) Number Properties and number methods<span class="methodExplanation"> some new number properties and methods were added to the number object.</span></h4>
+				<ul>
+					<li>
+						EPSILON
+						<br>
+						<code>
+							var x = Number.EPSILON;
+						</code>
+					</li>
+					<li>
+						MIN_SAFE_INTEGER
+						<br>
+						<code>
+							var x = Number.MIN_SAFE_INTEGER;
+						</code>
+					</li>
+					<li>
+						MAX_SAFE_INTEGER
+						<br>
+						<code>
+							var x = Number.MAX_SAFE_INTEGER;
+						</code>
+					</li>
+					<li>
+						Number.isInteger() returns true if it is an integer
+						<br>
+						<code>
+							Number.isInteger(1); //true
+						</code>
+					</li>
+					<li>
+						Number.isSafeInteger() returns true if it is an integer that can be represented as a double precision number.
+						<br>
+						<code>
+							Number.isSafeInteger(1.5); //false
+						</code>
+					</li>
+				</ul>
+				<br>
+			</div>
+
+			<div>
+				<h4>7) isFinite()<span class="methodExplanation"> returns true unless it is Infinity or NaN.</span></h4>
+				<code>
+					var isNumberFinite = isFinite(10/0); //false
+					var isNumberFinite = isFinite(10/1); //true
+				</code>
+				<br>
+				<samp id="isFiniteSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>8) isNaN()<span class="methodExplanation"> returns true if is NaN.</span></h4>
+				<code>
+					isNaN("a"); //true<br>
+					isNan(1); //false
+				</code>
+				<br>
+				<samp id="isFiniteSamp">
+				</samp>
+			</div>
+
+			<div>
+				<h4>9) Arrow Functions<span class="methodExplanation"> allow a short syntax for writing functional expressions.</span></h4>
+				<code>
+				 	let x = function(x, y){
+						return x * y;
+					}
+
+					Becomes:
+
+					let x = (x, y) => {
+						return x * y;
+					}
+				</code>
+				<br>
+				<samp id="isFiniteSamp">
+				</samp>
+			</div>
+
+			<h3>ES5 Methods Can Be Written Functionally</h3>
+			<section id="es5FunctionalContainer">
+				<p>Es6 allows for functions to accept functions as arguments.<br>
+				We can use this array of cars as an example.<br>
+				<code>
+					let cars = [<br>
+						&nbsp;{ make: "Toyota", model: "Camry" },<br>
+						&nbsp;{ make: "Kia", model: "Soul" },<br>
+						&nbsp;{ make: "Chevrolet", model: "Bolt" },<br>
+						&nbsp;{ make: "Kia", model: "Forte" },<br>
+						&nbsp;{ make: "Ford", model: "Escape" },<br>
+						&nbsp;{ make: "Toyota", model: "Corolla" },<br>
+						&nbsp;{ make: "Ford", model: "Expedition" }<br>
+					];
+				</code>
+				<div>
+					<h4>1) Functional Array.Filter() <span class="methodExplanation"> make a new array with only the filtered items</span></h4>
+					Example create a new array with only Toyotas<br>
+					The old for loop way:<br>
+					<code>
+						var toyotasFromForLoop = [];<br>
+						for(var i = 0; i < cars.length; i++){<br>
+							&nbsp;if(cars[i].make === "Toyota"){<br>
+								&nbsp;&nbsp;toyotasFromForLoop.push(cars[i]);<br>
+							&nbsp;}<br>
+						}<br>
+						console.log("Toyotas From For Loop", toyotasFromForLoop);
+					</code>
+					<br>
+					<samp id="toyotasFromForLoopSamp">
+					</samp>
+					<br>
+					<br>
+					Then using functional:<br>
+					<code>
+						var toyotasFromFunctional = cars.filter((car) => {<br>
+							&nbsp;return car.make === "Toyota";<br>
+						});<br>
+						console.log("Toyotas From Function:", toyotasFromFunctional);
+					</code>
+					<br>
+					<samp id="toyotasFromFunctionalSamp">
+					</samp>
+				</div>
+
+				<div>
+					<h4>2) Functional Array.map() <span class="methodExplanation"> makes a new array with mapped items.</span></h4>
+					Example create a new array of car models.<br>
+					<code>
+						var carModels = cars.map((car) => {<br>
+							&nbsp;return car.model;<br>
+						});<br>
+						console.log("Car Models:", carModels);
+					</code>
+					<br>
+					<samp id="mapFunctionalSamp">
+					</samp>
+				</div>
+
+				<div>
+					<h4>3) Functional Array.reduce() <span class="methodExplanation"> will iterate through an array to create a single value.</span></h4>
+					Example get the sum of all the values in an array.<br>
+					<code>
+						var numbers = [1, 2, 3, 4, 5];<br>
+						var sumValues = (total, value) => {<br>
+							&nbsp;return total + value;<br>
+						}<br>
+						var total = numbers.reduce(sumValues);<br>
+						console.log("Total:", total);
+					</code>
+					<br>
+					<samp id="reduceFunctionalSamp">
+					</samp>
+				</div>
+
+			</section>
+
+			<h3>ES7 2016</h3>
+			<section id="es7Container">
+
+				<div>
+					<h4>1) exponents ** <span class="methodExplanation"> operator raises the first number to the power of the second number. It is shorthand for Math.pow(x,y)</span></h4>
+					<code>
+						var x = 2;<br>
+						var y = x ** 3;<br>
+						console.log(x + " to the 3rd is", y);
+					</code>
+					<br>
+					<samp id="exponentsSamp">
+					</samp>
+				</div>
+
+				<div>
+					<h4>2) Array.includes() <span class="methodExplanation"> checks if an array contains a value.</span></h4>
+					<code>
+						var numbers = [1,2,3,4,5];<br>
+						var isIncluded = numbers.includes(3);<br>
+						console.log("Includes 3", isIncluded);
+					</code>
+					<br>
+					<samp id="arrayIncludesSamp">
+					</samp>
+				</div>
+
+			</section>
+
+			<h3>ES8 2017</h3>
+			<section id="es8Container">
+
+				<div>
+					<h4>1) str.padStart() <span class="methodExplanation"> will pad the beginning of a string with another string until it reaches the specified lengh.</span></h4>
+					<code>
+						let startPadded = "rabbit".padStart(10, "a");<br>
+						console.log("padStarted", startPadded);
+					</code>
+					<br>
+					<samp id="padStartSamp">
+					</samp>
+				</div>
+
+				<div>
+					<h4>2) str.padEnd() <span class="methodExplanation"> will pad the ending of a string with another string until it reaches the specified lengh.</span></h4>
+					<code>
+						let endPadded = "rabbit".padEnd(10, "a");<br>
+						console.log("padEnded", endPadded);
+					</code>
+					<br>
+					<samp id="padEndSamp">
+					</samp>
+				</div>
+
+				<div>
+					<h4>3) Object.values() <span class="methodExplanation"> returns an array of all the values in an object.</span></h4>
+					<code>
+						let car = {make: "Toyota", model: "Corolla"};<br>
+						console.log("car values:", Object.values(car));
+					</code>
+					<br>
+					<samp id="objectValuesSamp">
+					</samp>
+				</div>
+
+				<div>
+					<h4>4) Object.entries() <span class="methodExplanation"> returns an array of all the key value pairs in an object.</span></h4>
+					<code>
+						let car = {make: "Toyota", model: "Corolla"};
+						console.log("car entries:", Object.entries(car));
+					</code>
+					<br>
+					<samp id="objectEntriesSamp">
+					</samp>
+				</div>
+
+				<div>
+					<h4>5) Trailing Commas <span class="methodExplanation"> in function parameters and calls are no longer considered syntax errors.</span></h4>
+					<code>
+						function myFunction (varible1, variable2, variable3,){}<br>
+						myFunction(1, 2, 3,);
+					</code>
+					<p>These trailing commas will no longer throw an error.
+				</div>
+
+				<div>
+					<h4>6) Async Functions <span class="methodExplanation"> is a function which operates asynchornously via the event loop.</span></h4>
+					<code>
+						function resolveAfterSeconds(){<br>
+							&nbsp;return new Promise(resolve => {<br>
+								&nbsp;&nbsp;setTimeout(() => {<br>
+									&nbsp;&nbsp;&nbsp;resolve('call resolved');<br>
+								&nbsp;&nbsp;}, 2000);<br>
+							&nbsp;});<br>
+						}<br>
+						<br>
+						async function asyncCall(){<br>
+							&nbsp;console.log("Start Call");<br>
+							&nbsp;let result = await resolveAfterSeconds();<br>
+							&nbsp;console.log("2 seconds later", result);<br>
+						}<br>
+						<br>
+						asyncCall();<br>
+					</code>
+					<samp id="asyncFunctionFirst">
+					</samp>
+					<br>
+					<samp id="asyncFunctionSecond">
+					</samp>
+				</div>
+
+			</section>
+
+		<script src="javascript.js"></script>
+	</body>
+</html>
