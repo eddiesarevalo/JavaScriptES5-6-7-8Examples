@@ -4,9 +4,9 @@
  
 ##Instructions:
 
- 1)Clone or download the repository.
+ 1) Clone or download the repository.
  
- 2)Open the javascript.html file in a web browser.
+ 2) Open the javascript.html file in a web browser.
  
  ## License
 [GNU](https://www.gnu.org/licenses/gpl-3.0.en.html)
